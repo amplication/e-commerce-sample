@@ -9,8 +9,8 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { OrderWhereUniqueInput } from "../../order/base/OrderWhereUniqueInput";
-import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
+import { Order } from "../../order/base/Order";
+import { Product } from "../../product/base/Product";
 @ObjectType()
 class LineItem {
   @ApiProperty({
@@ -31,12 +31,12 @@ class LineItem {
 
   @ApiProperty({
     required: false,
-    type: OrderWhereUniqueInput,
+    type: () => Order,
   })
   @ValidateNested()
-  @Type(() => OrderWhereUniqueInput)
+  @Type(() => Order)
   @IsOptional()
-  order?: OrderWhereUniqueInput | null;
+  order?: Order | null;
 
   @ApiProperty({
     required: false,
@@ -51,12 +51,12 @@ class LineItem {
 
   @ApiProperty({
     required: false,
-    type: ProductWhereUniqueInput,
+    type: () => Product,
   })
   @ValidateNested()
-  @Type(() => ProductWhereUniqueInput)
+  @Type(() => Product)
   @IsOptional()
-  product?: ProductWhereUniqueInput | null;
+  product?: Product | null;
 
   @ApiProperty({
     required: false,

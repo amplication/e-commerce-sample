@@ -31,7 +31,7 @@ class ImageWhereInput {
 
   @ApiProperty({
     required: false,
-    type: ProductWhereUniqueInput,
+    type: () => ProductWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ProductWhereUniqueInput)

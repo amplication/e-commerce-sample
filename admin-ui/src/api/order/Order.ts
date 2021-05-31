@@ -1,14 +1,16 @@
-import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
-import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { Address } from "../address/Address";
+import { Customer } from "../customer/Customer";
+import { LineItem } from "../lineItem/LineItem";
+import { User } from "../user/User";
 
 export type Order = {
-  address?: AddressWhereUniqueInput | null;
+  address?: Address | null;
   comments: string | null;
   createdAt: Date;
-  customer?: CustomerWhereUniqueInput | null;
+  customer?: Customer | null;
   id: string;
+  lineItems?: Array<LineItem>;
   totalPrice: string | null;
   updatedAt: Date;
-  user?: UserWhereUniqueInput | null;
+  user?: User | null;
 };

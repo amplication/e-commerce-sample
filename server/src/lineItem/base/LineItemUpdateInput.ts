@@ -8,7 +8,7 @@ import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueIn
 class LineItemUpdateInput {
   @ApiProperty({
     required: false,
-    type: OrderWhereUniqueInput,
+    type: () => OrderWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => OrderWhereUniqueInput)
@@ -31,7 +31,7 @@ class LineItemUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: ProductWhereUniqueInput,
+    type: () => ProductWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ProductWhereUniqueInput)

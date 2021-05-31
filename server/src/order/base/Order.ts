@@ -1,20 +1,21 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+import { Address } from "../../address/base/Address";
 import { ValidateNested, IsOptional, IsString, IsDate } from "class-validator";
 import { Type } from "class-transformer";
-import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { Customer } from "../../customer/base/Customer";
+import { LineItem } from "../../lineItem/base/LineItem";
+import { User } from "../../user/base/User";
 @ObjectType()
 class Order {
   @ApiProperty({
     required: false,
-    type: AddressWhereUniqueInput,
+    type: () => Address,
   })
   @ValidateNested()
-  @Type(() => AddressWhereUniqueInput)
+  @Type(() => Address)
   @IsOptional()
-  address?: AddressWhereUniqueInput | null;
+  address?: Address | null;
 
   @ApiProperty({
     required: false,
@@ -37,12 +38,12 @@ class Order {
 
   @ApiProperty({
     required: false,
-    type: CustomerWhereUniqueInput,
+    type: () => Customer,
   })
   @ValidateNested()
-  @Type(() => CustomerWhereUniqueInput)
+  @Type(() => Customer)
   @IsOptional()
-  customer?: CustomerWhereUniqueInput | null;
+  customer?: Customer | null;
 
   @ApiProperty({
     required: true,
@@ -51,6 +52,15 @@ class Order {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [LineItem],
+  })
+  @ValidateNested()
+  @Type(() => LineItem)
+  @IsOptional()
+  lineItems?: Array<LineItem>;
 
   @ApiProperty({
     required: false,
@@ -73,11 +83,11 @@ class Order {
 
   @ApiProperty({
     required: false,
-    type: UserWhereUniqueInput,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => User)
   @IsOptional()
-  user?: UserWhereUniqueInput | null;
+  user?: User | null;
 }
 export { Order };
