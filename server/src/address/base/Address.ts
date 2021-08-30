@@ -8,7 +8,8 @@ import {
   IsBoolean,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
+import { Customer } from "../../customer/base/Customer";
+import { Order } from "../../order/base/Order";
 @ObjectType()
 class Address {
   @ApiProperty({
@@ -65,12 +66,12 @@ class Address {
 
   @ApiProperty({
     required: false,
-    type: CustomerWhereUniqueInput,
+    type: () => Customer,
   })
   @ValidateNested()
-  @Type(() => CustomerWhereUniqueInput)
+  @Type(() => Customer)
   @IsOptional()
-  customer?: CustomerWhereUniqueInput | null;
+  customer?: Customer | null;
 
   @ApiProperty({
     required: false,
@@ -112,6 +113,15 @@ class Address {
     nullable: true,
   })
   lastName!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Order],
+  })
+  @ValidateNested()
+  @Type(() => Order)
+  @IsOptional()
+  orders?: Array<Order>;
 
   @ApiProperty({
     required: false,

@@ -1,7 +1,9 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional } from "class-validator";
+import { IsDate, IsString, ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { Image } from "../../image/base/Image";
+import { LineItem } from "../../lineItem/base/LineItem";
 @ObjectType()
 class Product {
   @ApiProperty({
@@ -19,6 +21,24 @@ class Product {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Image],
+  })
+  @ValidateNested()
+  @Type(() => Image)
+  @IsOptional()
+  images?: Array<Image>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [LineItem],
+  })
+  @ValidateNested()
+  @Type(() => LineItem)
+  @IsOptional()
+  lineItems?: Array<LineItem>;
 
   @ApiProperty({
     required: false,

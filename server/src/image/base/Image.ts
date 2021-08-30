@@ -2,7 +2,7 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
-import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
+import { Product } from "../../product/base/Product";
 @ObjectType()
 class Image {
   @ApiProperty({
@@ -34,12 +34,12 @@ class Image {
 
   @ApiProperty({
     required: false,
-    type: ProductWhereUniqueInput,
+    type: () => Product,
   })
   @ValidateNested()
-  @Type(() => ProductWhereUniqueInput)
+  @Type(() => Product)
   @IsOptional()
-  product?: ProductWhereUniqueInput | null;
+  product?: Product | null;
 
   @ApiProperty({
     required: false,

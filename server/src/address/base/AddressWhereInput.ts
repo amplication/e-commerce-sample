@@ -54,7 +54,7 @@ class AddressWhereInput {
 
   @ApiProperty({
     required: false,
-    type: CustomerWhereUniqueInput,
+    type: () => CustomerWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => CustomerWhereUniqueInput)

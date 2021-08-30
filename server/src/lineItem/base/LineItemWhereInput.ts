@@ -22,7 +22,7 @@ class LineItemWhereInput {
 
   @ApiProperty({
     required: false,
-    type: OrderWhereUniqueInput,
+    type: () => OrderWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => OrderWhereUniqueInput)
@@ -45,7 +45,7 @@ class LineItemWhereInput {
 
   @ApiProperty({
     required: false,
-    type: ProductWhereUniqueInput,
+    type: () => ProductWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ProductWhereUniqueInput)

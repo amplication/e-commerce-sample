@@ -1,12 +1,12 @@
-import { OrderWhereUniqueInput } from "../order/OrderWhereUniqueInput";
-import { ProductWhereUniqueInput } from "../product/ProductWhereUniqueInput";
+import { Order } from "../order/Order";
+import { Product } from "../product/Product";
 
 export type LineItem = {
   createdAt: Date;
   id: string;
-  order?: OrderWhereUniqueInput | null;
+  order?: Order | null;
   price: number | null;
-  product?: ProductWhereUniqueInput | null;
+  product?: Product | null;
   quantity: number | null;
   updatedAt: Date;
 };

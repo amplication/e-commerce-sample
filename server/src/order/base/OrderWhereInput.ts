@@ -11,7 +11,7 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 class OrderWhereInput {
   @ApiProperty({
     required: false,
-    type: AddressWhereUniqueInput,
+    type: () => AddressWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => AddressWhereUniqueInput)
@@ -34,7 +34,7 @@ class OrderWhereInput {
 
   @ApiProperty({
     required: false,
-    type: CustomerWhereUniqueInput,
+    type: () => CustomerWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => CustomerWhereUniqueInput)
@@ -68,7 +68,7 @@ class OrderWhereInput {
 
   @ApiProperty({
     required: false,
-    type: UserWhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)

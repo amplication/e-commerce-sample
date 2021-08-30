@@ -1,10 +1,10 @@
-import { ProductWhereUniqueInput } from "../product/ProductWhereUniqueInput";
+import { Product } from "../product/Product";
 
 export type Image = {
   createdAt: Date;
   height: string | null;
   id: string;
-  product?: ProductWhereUniqueInput | null;
+  product?: Product | null;
   src: string | null;
   updatedAt: Date;
   width: string | null;
