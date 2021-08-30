@@ -1,7 +1,5 @@
 # By default, use node 14.15.3 as the base image
-ARG IMAGE=node@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
-
-FROM $IMAGE
+FROM node:14-alpine as builder
 
 # Define how verbose should npm install be
 ARG NPM_LOG_LEVEL=silent

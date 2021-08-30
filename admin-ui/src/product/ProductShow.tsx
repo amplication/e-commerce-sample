@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   Show,
   SimpleShowLayout,
-  ListProps,
+  ShowProps,
   DateField,
   TextField,
   ReferenceManyField,
@@ -14,7 +14,7 @@ import {
 import { PRODUCT_TITLE_FIELD } from "./ProductTitle";
 import { ORDER_TITLE_FIELD } from "../order/OrderTitle";
 
-export const ProductShow = (props: ListProps): React.ReactElement => {
+export const ProductShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
